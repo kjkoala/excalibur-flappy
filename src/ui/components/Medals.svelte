@@ -27,7 +27,7 @@
 <div class="medal">
   <div class="text">medal</div>
   <div class="medalIcon">
-    <img src={returnPathToImage(me)} alt="medal" />
+    <img src={returnPathToImage(me)} />
   </div>
 </div>
 
