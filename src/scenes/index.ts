@@ -1,4 +1,4 @@
-import { Engine, GameEvent, Scene, Timer } from "excalibur";
+import { Engine, Scene, Timer } from "excalibur";
 import { ClassBird } from "src/actors/Bird";
 import { Message } from "src/actors/Message";
 import { TilemapBackground, TilemapBase } from "src/actors/Paralax";

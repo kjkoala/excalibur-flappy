@@ -4,6 +4,7 @@
   import type { User } from "../types";
   import { resources } from "src/app/resources";
   let ul: HTMLUListElement | undefined;
+  export let me: User | undefined;
 
   const renderMedal = (user: User): HTMLImageElement | undefined => {
     if (user.score >= medals.BONZE_MEDAL && user.score < medals.SILVER_MEDAL) {
@@ -23,16 +24,18 @@
   const renderList = (userList: User[]) => {
     const fragment = new DocumentFragment();
     userList.forEach((user) => {
+      if (user?.me && me && user.score > me.score) {
+        me = user
+      }
       const li = document.createElement("li");
       const medal = renderMedal(user);
       li.append(`${user.position} `);
       if (medal) {
-        li.append(medal);
+        li.append(medal.cloneNode());
       }
       li.append(`${user.name}: ${user.score}`);
       fragment.append(li);
     });
-    console.log(fragment);
     return fragment;
   };
 

@@ -44,10 +44,10 @@
     <span class="score">{score}</span>
   {/if}
   {#if dead}
-    <span class:died={dead} />
-    <GameOver />
+  <span class:died={dead} />
+  <GameOver />
     <Board {score} {me}>
-      <UserList />
+      <UserList {me} />
       <div class="board__buttons">
         <button type="button" on:click={TelegramGameProxy.shareScore}
           >share</button
@@ -76,6 +76,7 @@
     inset: 0;
     opacity: 1;
     background: white;
+    z-index: 9;
     animation: 200ms ease-out 0s 1 deadAnim forwards;
   }
   .board__buttons {

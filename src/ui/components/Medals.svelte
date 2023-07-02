@@ -3,31 +3,32 @@
   import { resources } from "src/app/resources";
   import type { User } from "../types";
   export let me: User | undefined;
-  const returnPathToImage = (me?: User) => {
-    if (me) {
+  let medalNode: HTMLDivElement | undefined;
+  Promise.resolve()
+  .then(() => {
+    if (me && medalNode) {
       if (me.score >= medals.BONZE_MEDAL && me.score < medals.SILVER_MEDAL) {
-        return resources.bronze.path;
+        medalNode.append(resources.bronze.data.cloneNode());
       } else if (
         me.score >= medals.SILVER_MEDAL &&
         me.score < medals.GOLD_MEDAL
       ) {
-        return resources.silver.path;
+        medalNode.append(resources.silver.data.cloneNode());
       } else if (
         me.score >= medals.GOLD_MEDAL &&
         me.score < medals.PLATINUM_MEDAL
       ) {
-        return resources.gold.path;
+        medalNode.append(resources.gold.data.cloneNode());
       } else if (me.score >= medals.PLATINUM_MEDAL) {
-        return resources.platinum.path;
+        medalNode.append(resources.platinum.data.cloneNode());
       }
     }
-  };
+  })
 </script>
 
 <div class="medal">
   <div class="text">medal</div>
-  <div class="medalIcon">
-    <img src={returnPathToImage(me)} />
+  <div class="medalIcon" bind:this={medalNode} >
   </div>
 </div>
 
@@ -45,12 +46,9 @@
     background-color: #ccca89;
     box-shadow: inset 0 2px 0 1px #ccb25c, inset 0 0px 0 1px #fff;
   }
-  .medalIcon img {
+  .medalIcon :global(img) {
     width: 100%;
     height: 100%;
     image-rendering: pixelated;
-  }
-  .medalIcon img:not(src) {
-    display: none
   }
 </style>
