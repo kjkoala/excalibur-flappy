@@ -1,4 +1,4 @@
-import { Engine, Scene, Timer } from "excalibur";
+import { Engine, GameEvent, Scene, Timer } from "excalibur";
 import { ClassBird } from "src/actors/Bird";
 import { Message } from "src/actors/Message";
 import { TilemapBackground, TilemapBase } from "src/actors/Paralax";
@@ -7,18 +7,11 @@ import { resources } from "src/app/resources";
 
 import UI from "src/ui/UI.svelte";
 
-// interface IMain extends Scene {
-//     on(eventName: 'died', handler: (event: GameEvent<any>) => void): void;
-//     on(eventName: 'restart', handler: (event: GameEvent<any>) => void): void;
-//     on(eventName: 'start', handler: (event: GameEvent<any>) => void): void;
-//     on(eventName: 'score', handler: (event: GameEvent<any>) => void): void;
-// }
-
 export class Main extends Scene {
-    // override on(eventName: 'died', handler: (event: GameEvent<any>) => void): void;
-    // override on(eventName: 'restart', handler: (event: GameEvent<any>) => void): void;
-    // override on(eventName: 'start', handler: (event: GameEvent<any>) => void): void;
-    // override on(eventName: 'score', handler: (event: GameEvent<any>) => void): void;
+    //  on(eventName: 'died', handler: (event: GameEvent<any>) => void): void;
+    // on(eventName: 'restart', handler: (event: GameEvent<any>) => void): void;
+    // on(eventName: 'start', handler: (event: GameEvent<any>) => void): void;
+    // on(eventName: 'score', handler: (event: GameEvent<any>) => void): void;
     player!: ClassBird
     timer!: Timer
     state = {
