@@ -50,4 +50,7 @@
     height: 100%;
     image-rendering: pixelated;
   }
+  .medalIcon img:not(src) {
+    display: none
+  }
 </style>
