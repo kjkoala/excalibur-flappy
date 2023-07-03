@@ -13,9 +13,11 @@
   let me: User | undefined;
 
   onMount(() => {
-    fetchUsers().then((users) => {
-      me = users.find((user) => user.me);
-    });
+    scene.on('initialize', () => {
+      fetchUsers().then((users) => {
+        me = users.find((user) => user.me);
+      });
+    })
     scene.on("restart", () => {
       playing = scene.state.playing;
       dead = scene.state.dead;

@@ -6,28 +6,27 @@ type Owner = Entity & {
 }
 export class WindowResizeComponent extends Component<"window-resize"> {
   readonly type = "window-resize"
-
+  debounce: () => void;
   declare owner: Owner
   engine: Engine;
   constructor(engine: Engine) {
     super()
     this.engine = engine;
+    this.debounce = this.onDebounce()
   }
 
   onResize = () => {
-    console.log(1234)
     if (this.owner?.onWindowResize) {
       this.engine.once("predraw", () => {
-        this.owner.onWindowResize.call(this.owner, this.engine)
+        window.removeEventListener("resize", this.debounce)
+        this.owner.onWindowResize.call<Owner, [engine: Engine], void>(this.owner, this.engine)
       })
     }
   }
-
-  onAdd?(owner: Owner): void {
-    window.addEventListener("resize", debounce(this.onResize, 500))
+  onDebounce = () => {
+   return debounce(this.onResize, 250)
   }
-
-//   onRemove?(previousOwner: Owner): void {
-//     window.removeEventListener("resize", this.onResize)
-//   }
+  onAdd?(): void {
+    window.addEventListener("resize", this.debounce)
+  }
 }
