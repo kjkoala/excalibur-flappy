@@ -1,6 +1,7 @@
 import { vec, TileMap, Engine, Vector } from 'excalibur';
 import { resources } from 'src/app/resources';
 import { Main } from 'src/scenes';
+import { WindowResizeComponent } from 'src/utlis/WindowResizeComponent';
 
 export class TilemapBackground extends TileMap {
     scene!: Main

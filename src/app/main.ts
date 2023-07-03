@@ -19,7 +19,6 @@ const engine = new Engine({
   },
   displayMode: DisplayMode.FitScreenAndFill
 })
-
 engine.addScene('main', new Main)
 engine.start(loader)
 .then(() => engine.goToScene('main'))

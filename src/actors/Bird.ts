@@ -1,6 +1,7 @@
 import { Actor, SpriteSheet, Animation, range, Engine, CollisionType, vec, RotationType, Color, AnimationStrategy } from "excalibur";
 import { resources } from "src/app/resources";
 import { Main } from "src/scenes";
+import { WindowResizeComponent } from "src/utlis/WindowResizeComponent";
 
 const birdSprite = SpriteSheet.fromImageSource({
     image: resources.bird,
@@ -29,6 +30,7 @@ export class ClassBird extends Actor {
             z: 3,
         })
         this.base = game.drawHeight - 112;
+        this.addComponent(new WindowResizeComponent(game))
     }
 
     onPostUpdate(): void {
@@ -38,6 +40,10 @@ export class ClassBird extends Actor {
         } else if (this.pos.y >= this.base && !this.scene.state.dead) {
             this.scene.emit('died', 'ground')
         }
+    }
+
+    onWindowResize(engine: Engine) {
+        engine.goToScene('main')
     }
 
     onInitialize(engine: Engine): void {
