@@ -25,7 +25,7 @@
     const fragment = new DocumentFragment();
     userList.forEach((user) => {
       if (user?.me && me && user.score > me.score) {
-        me = user
+        me = user;
       }
       const li = document.createElement("li");
       const medal = renderMedal(user);

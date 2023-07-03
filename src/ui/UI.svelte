@@ -13,11 +13,11 @@
   let me: User | undefined;
 
   onMount(() => {
-    scene.on('initialize', () => {
+    scene.on("initialize", () => {
       fetchUsers().then((users) => {
         me = users.find((user) => user.me);
       });
-    })
+    });
     scene.on("restart", () => {
       playing = scene.state.playing;
       dead = scene.state.dead;
@@ -46,8 +46,8 @@
     <span class="score">{score}</span>
   {/if}
   {#if dead}
-  <span class:died={dead} />
-  <GameOver />
+    <span class:died={dead} />
+    <GameOver />
     <Board {score} {me}>
       <UserList {me} />
       <div class="board__buttons">

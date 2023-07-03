@@ -1,4 +1,4 @@
-import { Actor, SpriteSheet, Animation, range, Engine, CollisionType, vec, RotationType, Color, AnimationStrategy, EnterViewPortEvent } from "excalibur";
+import { Actor, SpriteSheet, Animation, range, Engine, CollisionType, vec, RotationType, Color, AnimationStrategy } from "excalibur";
 import { resources } from "src/app/resources";
 import { Main } from "src/scenes";
 import { WindowResizeComponent } from "src/utlis/WindowResizeComponent";

@@ -4,8 +4,7 @@
   import type { User } from "../types";
   export let me: User | undefined;
   let medalNode: HTMLDivElement | undefined;
-  Promise.resolve()
-  .then(() => {
+  Promise.resolve().then(() => {
     if (me && medalNode) {
       if (me.score >= medals.BONZE_MEDAL && me.score < medals.SILVER_MEDAL) {
         medalNode.append(resources.bronze.data.cloneNode());
@@ -23,13 +22,12 @@
         medalNode.append(resources.platinum.data.cloneNode());
       }
     }
-  })
+  });
 </script>
 
 <div class="medal">
   <div class="text">medal</div>
-  <div class="medalIcon" bind:this={medalNode} >
-  </div>
+  <div class="medalIcon" bind:this={medalNode} />
 </div>
 
 <style>
