@@ -7,13 +7,14 @@ import { resources } from "src/app/resources";
 
 import UI from "src/ui/UI.svelte";
 
-export class Main extends Scene {
+export class Main extends Scene{
     //  on(eventName: 'died', handler: (event: GameEvent<any>) => void): void;
     // on(eventName: 'restart', handler: (event: GameEvent<any>) => void): void;
     // on(eventName: 'start', handler: (event: GameEvent<any>) => void): void;
     // on(eventName: 'score', handler: (event: GameEvent<any>) => void): void;
     player!: ClassBird
     timer!: Timer
+    ui!: UI
     state = {
         score: 0,
         playing: false,
@@ -39,7 +40,7 @@ export class Main extends Scene {
           this.on('restart', this.onRestart.bind(this))
           this.on('died', this.onPlayerDied.bind(this))
 
-          new UI({
+          this.ui = new UI({
             target: document.querySelector('#root')!,
             props: {
                 scene: this

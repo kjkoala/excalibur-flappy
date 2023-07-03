@@ -1,6 +1,7 @@
-import { Actor, SpriteSheet, Animation, range, Engine, CollisionType, vec, RotationType, Color, AnimationStrategy } from "excalibur";
+import { Actor, SpriteSheet, Animation, range, Engine, CollisionType, vec, RotationType, Color, AnimationStrategy, Scene } from "excalibur";
 import { resources } from "src/app/resources";
 import { Main } from "src/scenes";
+import type Ui from "src/ui/UI.svelte";
 import { WindowResizeComponent } from "src/utlis/WindowResizeComponent";
 
 const birdSprite = SpriteSheet.fromImageSource({
@@ -43,6 +44,8 @@ export class ClassBird extends Actor {
     }
 
     onWindowResize(engine: Engine) {
+        const currentScene = engine.currentScene as Scene & { ui: Ui }
+        currentScene.ui.$destroy()
         engine.removeScene('main')
         engine.addScene('main', new Main)
         engine.goToScene('main')
