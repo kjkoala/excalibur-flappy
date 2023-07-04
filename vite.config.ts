@@ -14,6 +14,7 @@ export default defineConfig({
       }
     }
   },
+  base: '/flappy/',
     plugins: [
         svelte({
             preprocess: preprocess()
