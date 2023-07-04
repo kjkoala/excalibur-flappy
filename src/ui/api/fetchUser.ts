@@ -6,7 +6,7 @@ export const fetchUsers: () => Promise<User[]> = () => fetch('/api/flappy/getHei
         "Content-Type": "application/json"
     },
     body: JSON.stringify({
-        data: window.location.hash
+        data: location.search.slice(4),
     })
 })
 .then(res => res.json())

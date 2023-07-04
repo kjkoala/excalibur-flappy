@@ -4,7 +4,7 @@ export const setScore = (score: number) => fetch('/api/flappy/setScore', {
         "Content-Type": "application/json"
     },
     body: JSON.stringify({
-        data: window.location.hash,
+        data: location.search.slice(4),
         score: score
     })
 })
